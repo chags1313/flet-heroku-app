@@ -3,6 +3,12 @@ import os
 import flet
 from flet import ElevatedButton, Image, Page
 
+port = os.getenv("PORT")
+if port:
+    try:
+        port = int(port)
+    except ValueError:
+        port = None  # or a default port number that your app uses when not running on Heroku
 
 def main(page: Page):
 
@@ -21,4 +27,4 @@ def main(page: Page):
     )
 
 
-flet.app(target=main, port=os.getenv("PORT"))
+flet.app(target=main, port=port)
