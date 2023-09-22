@@ -1,12 +1,24 @@
 import os
-import random
-from math import pi
 
 import flet
-from flet import Container, ElevatedButton, Page, Stack, colors
+from flet import ElevatedButton, Image, Page
 
 
 def main(page: Page):
-    page.add(flet.Text("Hello World"))
 
-flet.app(target=main, port=5000, route_url_strategy="path")
+    c = Image(src="https://picsum.photos/200/300", opacity=None, animate_opacity=300)
+
+    def animate_opacity(e):
+        c.opacity = 0 if c.opacity == 1 else 1
+        c.update()
+
+    page.add(
+        c,
+        ElevatedButton(
+            "Animate opacity",
+            on_click=animate_opacity,
+        ),
+    )
+
+
+flet.app(target=main, port=os.getenv("PORT"))
