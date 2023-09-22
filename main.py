@@ -27,4 +27,4 @@ def main(page: Page):
     )
 
 
-flet.app(target=main, port=port)
+flet.app(target=main, port=port, view = ft.WEB_BROWSER)
