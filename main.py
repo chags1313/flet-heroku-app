@@ -10,6 +10,14 @@ import time
 import pandas as pd
 import os
 
+port = os.getenv("PORT")
+if port:
+    try:
+        port = int(port)
+    except ValueError:
+        port = None  # or a default port number that your app uses when not running on Heroku
+
+
 workouts = pd.DataFrame(
     {
         "Exercises": ['Overhead Press', 'Lateral Lift'],
